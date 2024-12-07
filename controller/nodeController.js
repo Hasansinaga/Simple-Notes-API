@@ -1,6 +1,7 @@
 const NoteModel = require('../model/note');
 
 const NoteController = {
+  //tambah/buat note
   createNote: (req, res) => {
     const noteData = req.body;
     NoteModel.create(noteData, (err, result) => {
@@ -9,6 +10,7 @@ const NoteController = {
     });
   },
 
+  //menampilkan semua notes
   getAllNotes: (req, res) => {
     NoteModel.getAll((err, results) => {
       if (err) return res.status(500).send(err);
@@ -16,6 +18,7 @@ const NoteController = {
     });
   },
 
+  //menampilkan salah satu notes
   getNoteById: (req, res) => {
     const { id } = req.params;
     NoteModel.getById(id, (err, result) => {
@@ -25,6 +28,7 @@ const NoteController = {
     });
   },
 
+  //mengubah notes (judul, tanggal, dan catatan)
   updateNote: (req, res) => {
     const { id } = req.params;
     const noteData = req.body;
@@ -35,6 +39,7 @@ const NoteController = {
     });
   },
 
+  //menghapus notes
   deleteNote: (req, res) => {
     const { id } = req.params;
     NoteModel.delete(id, (err, result) => {

@@ -1,4 +1,3 @@
-const express = require('express');
 const NoteController = require('../controller/nodeController');
 
 const router = express.Router();
